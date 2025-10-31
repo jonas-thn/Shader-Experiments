@@ -1,14 +1,14 @@
 #pragma once
 
-inline float triangleVertices[] =
+inline const float triangleVertices[] =
 {
     // positions // normals // texture coords
-    -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,
-     0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   1.0f, 0.0f,
-     0.0f,  0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.5f, 1.0f
+    -0.5f, -0.5f, 0.0f, //  0.0f, 0.0f, 1.0f,   0.0f, 0.0f,
+     0.5f, -0.5f, 0.0f, //  0.0f, 0.0f, 1.0f,   1.0f, 0.0f,
+     0.0f,  0.5f, 0.0f, //  0.0f, 0.0f, 1.0f,   0.5f, 1.0f
 };
 
-inline float quadVertices[] =
+inline const float quadVertices[] =
 {
     // positions // normals // texture coords
     0.5f,  0.5f, 0.0f,   0.0f, 0.0f, -1.0f,   1.0f, 1.0f,
@@ -17,14 +17,14 @@ inline float quadVertices[] =
    -0.5f,  0.5f, 0.0f,   0.0f, 0.0f, -1.0f,   0.0f, 1.0f
 };
 
-inline unsigned int quadIndices[] =
+inline const unsigned int quadIndices[] =
 {
     0, 1, 3,
     1, 2, 3
 };
 
 
-inline float screenVertices[] =
+inline const float screenVertices[] =
 {
     // positions (x,y,z)    // texCoords (u,v)
     -1.0f,  1.0f, 0.0f,     0.0f, 1.0f,
@@ -37,7 +37,7 @@ inline float screenVertices[] =
 };
 
 
-inline float cubeVertices[] =
+inline const float cubeVertices[] =
 {
     // positions // normals // texture coords
     -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,

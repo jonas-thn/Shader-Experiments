@@ -1,9 +1,11 @@
 #pragma once
 
-#define GLEW_STATIC
 #include <gl/glew.h>
 
 #include <SDL.h>
+
+#include "MeshData.h"
+#include "Shader.h"
 
 class Application
 {
@@ -29,5 +31,10 @@ private:
 	int height = 600;
 
 	float lastFrame;
+
+	unsigned int VBO;
+	unsigned int VAO;
+
+	Shader shader = Shader("Shader/Standard/standardShader.vert", "Shader/Standard/standardShader.frag");
 };
 
