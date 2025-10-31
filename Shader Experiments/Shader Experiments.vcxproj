@@ -71,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ExternalIncludePath>C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\assimp\include;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glm;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glew\include;C:\SDL2\include;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\ImGui;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\assimp\include;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glm;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glew\include;C:\SDL2\include;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\assimp\lib;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glew\lib\Release\Win32;C:\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ExternalIncludePath>C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\assimp\include;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glm;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glew\include;C:\SDL2\include;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\ImGui;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\assimp\include;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glm;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glew\include;C:\SDL2\include;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\assimp\lib;C:\Users\thaun\Desktop\Programs\Shader Experiments\libs\glew\lib\Release\Win32;C:\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -136,6 +136,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="ImGui\imgui.cpp" />
+    <ClCompile Include="ImGui\imgui_demo.cpp" />
+    <ClCompile Include="ImGui\imgui_draw.cpp" />
+    <ClCompile Include="ImGui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="ImGui\imgui_impl_sdl2.cpp" />
+    <ClCompile Include="ImGui\imgui_tables.cpp" />
+    <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -143,6 +150,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="ImGui\imconfig.h" />
+    <ClInclude Include="ImGui\imgui.h" />
+    <ClInclude Include="ImGui\imgui_impl_opengl3.h" />
+    <ClInclude Include="ImGui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="ImGui\imgui_impl_sdl2.h" />
+    <ClInclude Include="ImGui\imgui_internal.h" />
+    <ClInclude Include="ImGui\imstb_rectpack.h" />
+    <ClInclude Include="ImGui\imstb_textedit.h" />
+    <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshData.h" />
     <ClInclude Include="Shader.h" />
@@ -151,6 +167,9 @@
   <ItemGroup>
     <None Include="Shader\Standard\standardShader.frag" />
     <None Include="Shader\Standard\standardShader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ImGui\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

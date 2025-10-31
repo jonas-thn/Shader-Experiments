@@ -28,23 +28,63 @@ void Application::Init()
 		return;
 	}
 
-	glViewport(0, 0, width, height);
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; 
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;    
+	ImGui::StyleColorsDark();
+
+	ImGui_ImplSDL2_InitForOpenGL(window, glContext);
+	ImGui_ImplOpenGL3_Init("#version 130");
+
+	ImGuiStyle& style = ImGui::GetStyle();
+	style.Colors[ImGuiCol_FrameBg] = grey02Color;
+	style.Colors[ImGuiCol_FrameBgHovered] = grey04Color;
+	style.Colors[ImGuiCol_FrameBgActive] = grey06Color;
+	style.Colors[ImGuiCol_PopupBg] = grey02Color;
+	style.Colors[ImGuiCol_Border] = grey04Color;
+	style.Colors[ImGuiCol_BorderShadow] = blackColor;
+	style.Colors[ImGuiCol_Header] = grey04Color;
+	style.Colors[ImGuiCol_HeaderHovered] = grey06Color;
+	style.Colors[ImGuiCol_HeaderActive] = grey08Color;
+	style.Colors[ImGuiCol_Text] = whiteColor;
+	style.Colors[ImGuiCol_CheckMark] = whiteColor;
+	style.Colors[ImGuiCol_ScrollbarBg] = grey02Color;
+	style.Colors[ImGuiCol_ScrollbarGrab] = grey04Color;
+	style.Colors[ImGuiCol_ScrollbarGrabHovered] = grey06Color;
+	style.Colors[ImGuiCol_ScrollbarGrabActive] = grey08Color;
+	style.Colors[ImGuiCol_Button] = grey04Color;
+	style.Colors[ImGuiCol_SliderGrab] = grey08Color;
+	style.Colors[ImGuiCol_SliderGrabActive] = whiteColor;
+	style.Colors[ImGuiCol_ButtonHovered] = grey06Color;
+	style.Colors[ImGuiCol_ButtonActive] = grey08Color;
+	style.Colors[ImGuiCol_TextSelectedBg] = grey06Color;
+	style.Colors[ImGuiCol_Separator] = grey04Color;
+	style.Colors[ImGuiCol_SeparatorHovered] = grey06Color;
+	style.Colors[ImGuiCol_SeparatorActive] = grey08Color;
+	style.Colors[ImGuiCol_TitleBg] = grey02Color;
+	style.Colors[ImGuiCol_TitleBgActive] = grey04Color;
+	style.Colors[ImGuiCol_TitleBgCollapsed] = grey02Color;
+	style.Colors[ImGuiCol_ResizeGrip] = grey04Color;
+	style.Colors[ImGuiCol_ResizeGripHovered] = grey06Color;
+	style.Colors[ImGuiCol_ResizeGripActive] = grey08Color;
+	style.Colors[ImGuiCol_DragDropTarget] = grey08Color;
+	style.Colors[ImGuiCol_NavHighlight] = grey06Color;
+	style.Colors[ImGuiCol_NavWindowingHighlight] = grey06Color;
+	style.Colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0, 0, 0, 0.4f);
+	style.Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0, 0, 0, 0.4f);
+
+	glViewport(-uiWidth, 0, width + uiWidth, height);
 }
 
 void Application::Setup()
 {
-	//Meshes
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(triangleVertices), triangleVertices, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-	glBindVertexArray(0);
+	projection = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
+	view = glm::lookAt(glm::vec3(1.0f, 0.0f, 5.0f), //cam pos
+		glm::vec3(1.0f, 0.0f, 0.0f), //look at
+		glm::vec3(0.0f, 1.0f, 0.0f) //up
+	);
 
 	//Shader
 	standardShader.Init();
@@ -58,6 +98,7 @@ void Application::ProcessInput()
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
+		ImGui_ImplSDL2_ProcessEvent(&event);
 		if (event.type == SDL_QUIT)
 		{
 			running = false;
@@ -69,7 +110,7 @@ void Application::ProcessInput()
 			{
 				width = event.window.data1;
 				height = event.window.data2;
-				glViewport(0, 0, width, height);
+				glViewport(-uiWidth, 0, width + uiWidth, height);
 			}
 		}
 	}
@@ -79,28 +120,66 @@ void Application::Update()
 {
 	float deltaTime = (SDL_GetTicks() - lastFrame) / 1000.0f;
 	lastFrame = SDL_GetTicks();
+
+	uiWidth = width * uiWidthPercent;
+	
+	static float angle = 0.0f;
+	angle += camSpeed * deltaTime;
+	glm::vec3 camPos;
+
+	camPos.x = sin(angle) * camRadius;
+	camPos.y = 0.0f; 
+	camPos.z = cos(angle) * camRadius;
+
+	view = glm::lookAt(camPos, //cam pos
+		glm::vec3(0.0f, 0.0f, 0.0f), //look at
+		glm::vec3(0.0f, 1.0f, 0.0f) //up
+	);
 }
 
 void Application::Render()
 {
-	glClearColor(0.25, 0.4, 0.5, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glViewport(-uiWidth, 0, width + uiWidth, height);
 
-	/*standardShader.Use();
-	glBindVertexArray(VAO);
-	glDrawArrays(GL_TRIANGLES, 0, 3);*/
+	DrawGUI();
+	DrawScene();
 
-	glm::mat4 matrix = glm::mat4(1.0f);
-
-	triangle.Draw(standardShader, matrix, matrix);
-
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	SDL_GL_SwapWindow(window);
 }
 
 void Application::Destroy()
 {
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
+
 	SDL_GL_DeleteContext(glContext);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
+
+void Application::DrawGUI()
+{
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplSDL2_NewFrame();
+	ImGui::NewFrame();
+
+	ImGui::SetNextWindowPos(ImVec2(width - uiWidth, 0));
+	ImGui::SetNextWindowSize(ImVec2(uiWidth, height));
+
+	ImGui::Begin("Ui Test", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollWithMouse);
+
+
+	ImGui::End();
+
+	ImGui::Render();
+}
+
+void Application::DrawScene()
+{
+	glClearColor(0.25, 0.4, 0.5, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT);
+	triangle.Draw(standardShader, view, projection);
 }
 

@@ -52,6 +52,11 @@ void Mesh::Init()
 	glBindVertexArray(0);
 }
 
+void Mesh::Translate(glm::vec3 pos)
+{
+	model = glm::translate(model, pos);
+}
+
 void Mesh::Rotate(float angle, const glm::vec3& axis)
 {
 	model = glm::rotate(model, glm::radians(angle), axis);

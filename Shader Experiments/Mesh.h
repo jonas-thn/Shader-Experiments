@@ -22,6 +22,7 @@ public:
 	~Mesh();
 	void Init();
 
+	void Translate(glm::vec3 pos);
 	void Rotate(float angle, const glm::vec3& axis);
 	void RotateWorld(float dx, float dy, float sensitivity);
 	void ResetScale();
