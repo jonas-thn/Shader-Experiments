@@ -27,15 +27,14 @@ inline const unsigned int quadIndices[] =
 inline const float screenVertices[] =
 {
     // positions (x,y,z)    // texCoords (u,v)
-    -1.0f,  1.0f, 0.0f,     0.0f, 1.0f,
-    -1.0f, -1.0f, 0.0f,     0.0f, 0.0f,
-     1.0f, -1.0f, 0.0f,     1.0f, 0.0f,
+    -1.0f,  1.0f, 0.0f,    0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+    -1.0f, -1.0f, 0.0f,    0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+     1.0f, -1.0f, 0.0f,    0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
 
-    -1.0f,  1.0f, 0.0f,     0.0f, 1.0f,
-     1.0f, -1.0f, 0.0f,     1.0f, 0.0f,
-     1.0f,  1.0f, 0.0f,     1.0f, 1.0f
+    -1.0f,  1.0f, 0.0f,    0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+     1.0f, -1.0f, 0.0f,    0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+     1.0f,  1.0f, 0.0f,    0.0f, 0.0f, 0.0f, 1.0f, 1.0f
 };
-
 
 inline const float cubeVertices[] =
 {

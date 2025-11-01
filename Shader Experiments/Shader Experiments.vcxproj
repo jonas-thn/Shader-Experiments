@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Scenes\NoiseScene\NoiseScene.cpp" />
     <ClCompile Include="Scenes\Empty\EmptyScene.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Scenes\NoiseScene\NoiseScene.h" />
     <ClInclude Include="Scenes\Empty\EmptyScene.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
@@ -172,6 +174,8 @@
   <ItemGroup>
     <None Include="Shader\Lighting\lightingShader.frag" />
     <None Include="Shader\Lighting\lightingShader.vert" />
+    <None Include="Shader\Noise\noiseShader.frag" />
+    <None Include="Shader\Noise\noiseShader.vert" />
     <None Include="Shader\Standard\standardShader.frag" />
     <None Include="Shader\Standard\standardShader.vert" />
   </ItemGroup>

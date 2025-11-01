@@ -88,8 +88,10 @@ void Application::Setup()
 		glm::vec3(0.0f, 1.0f, 0.0f) //up
 	);
 
-	lightingScene->Init();
-	emptyScene->Init();
+	for (auto scene : sceneList)
+	{
+		scene->Init();
+	}
 }
 
 void Application::ProcessInput()
@@ -135,8 +137,10 @@ void Application::Update()
 		glm::vec3(0.0f, 1.0f, 0.0f) //up
 	);
 
-	lightingScene->Update(deltaTime);
-	emptyScene->Update(deltaTime);
+	for (auto scene : sceneList)
+	{
+		scene->Update(deltaTime);
+	}
 }
 
 void Application::Render()
@@ -176,7 +180,7 @@ void Application::DrawGUI()
 
 	//Lighting Scene
 	ImGui::SeparatorText("Simple Lighting");
-	if (ImGui::Button("Load Scene", ImVec2(-1, buttonHeight)))
+	if (ImGui::Button("Load Scene##1", ImVec2(-1, buttonHeight)))
 	{
 		activeScene = ActiveScene::Lighting;
 	}
@@ -189,8 +193,12 @@ void Application::DrawGUI()
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
-	//next
-	//...
+	ImGui::SeparatorText("Noise Stuff");
+	if (ImGui::Button("Load Scene##2", ImVec2(-1, buttonHeight)))
+	{
+		activeScene = ActiveScene::Noise;
+	}
+	ImGui::Text("Some Noise Stuff");
 
 	ImGui::End();
 
@@ -208,11 +216,15 @@ void Application::DrawScene()
 	}
 	else if(activeScene == ActiveScene::Lighting)
 	{
-		camRadius = 5.0f;
+		camRadius = 7.0f;
 		camSpeed = 1.0f;
 		cameraHeight = 1.75;
 
 		lightingScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
+	}
+	else if (activeScene == ActiveScene::Noise)
+	{
+		noiseScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}
 }
 

@@ -5,6 +5,7 @@ in vec3 Normals;
 in vec3 FragPos;
 
 uniform vec3 cameraPos;
+uniform int index;
 
 out vec4 FragColor;
 
@@ -12,6 +13,27 @@ void main()
 {
 	//base
 	vec3 baseColor = vec3(1.0);
+	if(index == 0)
+	{
+		baseColor = vec3(1.0, 0.0, 0.0);
+	}
+	else if (index == 1)
+	{
+		baseColor = vec3(.0, 1.0, 0.0);
+	}
+	else if (index == 2)
+	{
+		baseColor = vec3(0.0, 0.5, 1.0);
+	}
+	else if (index == 3)
+	{
+		baseColor = vec3(1.0, 1.0, 0.0);
+	}
+	else if (index == 4)
+	{
+		baseColor = vec3(1.0, 0.0, 1.0);
+	}
+
 	vec3 normal = normalize(Normals);
 	vec3 viewDir = normalize(cameraPos - FragPos);
 
@@ -42,7 +64,7 @@ void main()
 	vec3 fresnel = fresnelValue * fresnelColor;
 
 	//final
-	vec3 finalColor = baseColor * ambient * 0.5 + hemi * 0.5 + diffuse + specular + fresnel * 0.2;
+	vec3 finalColor = baseColor * ambient + hemi * 0.5 + diffuse + specular + fresnel * 0.2;
 	finalColor = clamp(finalColor, 0.0, 1.0);
 
 	FragColor = vec4(finalColor, 1.0);

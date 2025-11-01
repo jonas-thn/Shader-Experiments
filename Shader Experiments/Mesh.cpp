@@ -57,6 +57,11 @@ void Mesh::Translate(glm::vec3 pos)
 	model = glm::translate(model, pos);
 }
 
+void Mesh::SetPos(glm::vec3 pos)
+{
+	model = glm::translate(glm::mat4(1.0f), pos);
+}
+
 void Mesh::Rotate(float angle, const glm::vec3& axis)
 {
 	model = glm::rotate(model, glm::radians(angle), axis);

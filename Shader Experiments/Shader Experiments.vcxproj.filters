@@ -57,6 +57,9 @@
     <ClCompile Include="Scenes\Empty\EmptyScene.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes\NoiseScene\NoiseScene.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -110,12 +113,17 @@
     <ClInclude Include="Scenes\Empty\EmptyScene.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Scenes\NoiseScene\NoiseScene.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Standard\standardShader.vert" />
     <None Include="Shader\Standard\standardShader.frag" />
     <None Include="Shader\Lighting\lightingShader.vert" />
     <None Include="Shader\Lighting\lightingShader.frag" />
+    <None Include="Shader\Noise\noiseShader.vert" />
+    <None Include="Shader\Noise\noiseShader.frag" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ImGui\LICENSE.txt" />

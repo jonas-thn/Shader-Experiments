@@ -15,11 +15,13 @@
 #include "Mesh.h"
 #include "Scenes/LightingScene/LightingScene.h"
 #include "Scenes/Empty/EmptyScene.h"
+#include "Scenes/NoiseScene/NoiseScene.h"
 
 enum class ActiveScene
 {
 	None,
-	Lighting
+	Lighting,
+	Noise
 };
 
 class Application
@@ -50,8 +52,10 @@ private:
 
 	//Scenes
 	ActiveScene activeScene = ActiveScene::None;
-	std::unique_ptr<Scene> lightingScene = std::make_unique<LightingScene>();
-	std::unique_ptr<Scene> emptyScene = std::make_unique<EmptyScene>();
+	std::shared_ptr<Scene> emptyScene = std::make_shared<EmptyScene>();
+	std::shared_ptr<Scene> lightingScene = std::make_shared<LightingScene>();
+	std::shared_ptr<Scene> noiseScene = std::make_shared<NoiseScene>();
+	std::vector <std::shared_ptr<Scene>> sceneList = {emptyScene, lightingScene, noiseScene};
 
 	glm::vec3 camPos;
 	glm::mat4 projection = glm::mat4(1.0f);
