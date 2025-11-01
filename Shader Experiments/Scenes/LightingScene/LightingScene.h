@@ -10,7 +10,7 @@ public:
 
 	void Init() override;
 	void Update(float dt) override;
-	void Draw(glm::mat4& view, glm::mat4& projection, glm::vec3& camPos) override;
+	void Draw(glm::mat4& view, glm::mat4& projection, glm::vec3& camPos, float time) override;
 
 private:
 	Shader lightingShader = Shader("Shader/Lighting/lightingShader.vert", "Shader/Lighting/lightingShader.frag");

@@ -29,10 +29,10 @@ void LightingScene::Update(float dt)
 	//...
 }
 
-void LightingScene::Draw(glm::mat4& view, glm::mat4& projection, glm::vec3& camPos)
+void LightingScene::Draw(glm::mat4& view, glm::mat4& projection, glm::vec3& camPos, float time)
 {
-	for (Mesh* mesh : meshList)
+	for (int i = 0; i < meshList.size(); i++)
 	{
-		mesh->Draw(lightingShader, view, projection, camPos);
+		meshList[i]->Draw(lightingShader, view, projection, camPos, time, i);
 	}
 }

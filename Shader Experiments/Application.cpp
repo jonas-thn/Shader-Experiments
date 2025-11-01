@@ -129,8 +129,8 @@ void Application::Update()
 	camPos.y = 0.0f; 
 	camPos.z = cos(angle) * camRadius;
 
-	view = glm::lookAt(camPos + glm::vec3(0.0, 1.5, 0.0), //cam pos
-		glm::vec3(0.0f, 0.0f, 0.0f), //look at
+	view = glm::lookAt(camPos + glm::vec3(0.0, cameraHeight, 0.0), //cam pos
+		glm::vec3(0.0, 0.0, 0.0), //look at
 		glm::vec3(0.0f, 1.0f, 0.0f) //up
 	);
 
@@ -176,7 +176,7 @@ void Application::DrawGUI()
 	ImGui::SeparatorText("Simple Lighting");
 	if (ImGui::Button("Load Scene", ImVec2(-1, buttonHeight)))
 	{
-		//load
+		activeScene = ActiveScene::Lighting;
 	}
 	ImGui::Text("Simple Lighting Shader with:");
 	ImGui::BulletText("Ambient");
@@ -200,6 +200,13 @@ void Application::DrawScene()
 	glClearColor(0.1, 0.1, 0.105, 1.1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	lightingScene->Draw(view, projection, camPos);
+	if (activeScene == ActiveScene::None)
+	{
+		//...
+	}
+	else if(activeScene == ActiveScene::Lighting)
+	{
+		lightingScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
+	}
 }
 
