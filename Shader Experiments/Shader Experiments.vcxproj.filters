@@ -54,6 +54,9 @@
     <ClCompile Include="Scenes\LightingScene\LightingScene.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes\Empty\EmptyScene.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -102,6 +105,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\LightingScene\LightingScene.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\Empty\EmptyScene.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

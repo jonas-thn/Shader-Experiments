@@ -89,6 +89,7 @@ void Application::Setup()
 	);
 
 	lightingScene->Init();
+	emptyScene->Init();
 }
 
 void Application::ProcessInput()
@@ -135,6 +136,7 @@ void Application::Update()
 	);
 
 	lightingScene->Update(deltaTime);
+	emptyScene->Update(deltaTime);
 }
 
 void Application::Render()
@@ -202,10 +204,14 @@ void Application::DrawScene()
 
 	if (activeScene == ActiveScene::None)
 	{
-		//...
+		emptyScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}
 	else if(activeScene == ActiveScene::Lighting)
 	{
+		camRadius = 5.0f;
+		camSpeed = 1.0f;
+		cameraHeight = 1.75;
+
 		lightingScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}
 }

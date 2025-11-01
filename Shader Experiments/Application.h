@@ -14,6 +14,7 @@
 #include "Shader.h"
 #include "Mesh.h"
 #include "Scenes/LightingScene/LightingScene.h"
+#include "Scenes/Empty/EmptyScene.h"
 
 enum class ActiveScene
 {
@@ -50,14 +51,15 @@ private:
 	//Scenes
 	ActiveScene activeScene = ActiveScene::None;
 	std::unique_ptr<Scene> lightingScene = std::make_unique<LightingScene>();
+	std::unique_ptr<Scene> emptyScene = std::make_unique<EmptyScene>();
 
 	glm::vec3 camPos;
 	glm::mat4 projection = glm::mat4(1.0f);
 	glm::mat4 view = glm::mat4(1.0f);
 
-	float camRadius = 4.0f;
+	float camRadius = 2.5f;
 	float camSpeed = 1.0f;
-	float cameraHeight = 1.75;
+	float cameraHeight = 0.0f;
 
 	float uiWidthPercent = 0.35f;
 	int uiWidth = width * uiWidthPercent;
