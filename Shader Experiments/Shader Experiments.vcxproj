@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Scenes\RaymarchingScene\RaymarchingScene.cpp" />
     <ClCompile Include="Scenes\PlanetScene\PlanetScene.cpp" />
     <ClCompile Include="Scenes\OtherScene\OtherScene.cpp" />
     <ClCompile Include="Scenes\NoiseScene\NoiseScene.cpp" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Scenes\RaymarchingScene\RaymarchingScene.h" />
     <ClInclude Include="Scenes\PlanetScene\PlanetScene.h" />
     <ClInclude Include="Scenes\OtherScene\OtherScene.h" />
     <ClInclude Include="Scenes\NoiseScene\NoiseScene.h" />
@@ -182,6 +184,8 @@
     <None Include="Shader\Noise\noiseShader.vert" />
     <None Include="Shader\Planet\planetShader.frag" />
     <None Include="Shader\Planet\planetShader.vert" />
+    <None Include="Shader\Raymarching\raymarchShader.frag" />
+    <None Include="Shader\Raymarching\raymarchShader.vert" />
     <None Include="Shader\Standard\standardShader.frag" />
     <None Include="Shader\Standard\standardShader.vert" />
   </ItemGroup>

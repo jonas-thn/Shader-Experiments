@@ -212,8 +212,20 @@ void Application::DrawGUI()
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
-	ImGui::SeparatorText("Other");
+	ImGui::SeparatorText("Raymcahring");
 	if (ImGui::Button("Load Scene##3", ImVec2(-1, buttonHeight)))
+	{
+		activeScene = ActiveScene::Raymarching;
+		ResetScenes();
+		raymrchingScene->active = true;
+	}
+	ImGui::Text("Raymacrhing Stuff");
+	
+
+	ImGui::Dummy(ImVec2(0.0, 10.0));
+
+	ImGui::SeparatorText("Other");
+	if (ImGui::Button("Load Scene##4", ImVec2(-1, buttonHeight)))
 	{
 		activeScene = ActiveScene::Other;
 		ResetScenes();
@@ -248,6 +260,10 @@ void Application::DrawScene()
 	else if (activeScene == ActiveScene::Planet)
 	{
 		planetScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
+	}
+	else if (activeScene == ActiveScene::Raymarching)
+	{
+		raymrchingScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}
 	else if (activeScene == ActiveScene::Other)
 	{

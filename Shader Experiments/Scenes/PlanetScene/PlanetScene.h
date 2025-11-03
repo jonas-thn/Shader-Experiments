@@ -2,7 +2,6 @@
 
 #include "../Scene.h"
 #include "../../MeshData.h"
-#include "../../Mesh.h"
 #include <vector>
 
 class PlanetScene : public Scene

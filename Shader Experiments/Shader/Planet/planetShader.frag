@@ -235,7 +235,7 @@ mat3 rotateY(float angle)
     return mat3(c, 0.0, s,
                 0.0, 1.0, 0.0,
                 -s, 0.0, c);
-    }
+}
 
 vec3 DrawPlanetAndStars(vec2 pixelCoords)
 {
@@ -246,8 +246,8 @@ vec3 DrawPlanetAndStars(vec2 pixelCoords)
     float d = SDF_Circle(pixelCoords, size);
     vec3 planetColor = vec3(1.0);
 
-    mat3 planetRoation = rotateY(time * 0.1);
-    vec3 wsLightDir = planetRoation * normalize(vec3(0.5, 1.0, 0.5));
+    mat3 planetRotation = rotateY(time * 0.1);
+    vec3 wsLightDir = planetRotation * normalize(vec3(0.5, 1.0, 0.5));
 
     if(d <= 0.0)
     {
@@ -257,9 +257,9 @@ vec3 DrawPlanetAndStars(vec2 pixelCoords)
 
        
         vec3 viewNormal = vec3(x, y, z);
-        vec3 wsPosition = planetRoation * viewNormal;
-        vec3 wsNormal = planetRoation * normalize(wsPosition);
-        vec3 wsViewDir = planetRoation * vec3(0.0, 0.0, 1.0);
+        vec3 wsPosition = planetRotation * viewNormal;
+        vec3 wsNormal = planetRotation * normalize(wsPosition);
+        vec3 wsViewDir = planetRotation * vec3(0.0, 0.0, 1.0);
 
         vec3 noiseCord = wsPosition * 2.0;
         float noiseSample = fbm(noiseCord, 6, 0.5, 2.0, 4.0);

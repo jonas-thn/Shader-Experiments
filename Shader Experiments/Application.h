@@ -18,13 +18,15 @@
 #include "Scenes/NoiseScene/NoiseScene.h"
 #include "Scenes/OtherScene/OtherScene.h"
 #include "Scenes/PlanetScene/PlanetScene.h"
+#include "Scenes/RaymarchingScene/RaymarchingScene.h"
 
 enum class ActiveScene
 {
 	None,
 	Lighting,
 	Planet,
-	Other
+	Other,
+	Raymarching
 };
 
 class Application
@@ -59,8 +61,9 @@ private:
 	std::shared_ptr<Scene> emptyScene = std::make_shared<EmptyScene>();
 	std::shared_ptr<Scene> lightingScene = std::make_shared<LightingScene>();
 	std::shared_ptr<Scene> planetScene = std::make_shared<PlanetScene>();
+	std::shared_ptr<Scene> raymrchingScene = std::make_shared<RaymarchingScene>();
 	std::shared_ptr<Scene> otherScene = std::make_shared<OtherScene>();
-	std::vector <std::shared_ptr<Scene>> sceneList = {emptyScene, lightingScene, planetScene, otherScene};
+	std::vector <std::shared_ptr<Scene>> sceneList = {emptyScene, lightingScene, planetScene, raymrchingScene, otherScene};
 
 	glm::vec3 camPos;
 	glm::mat4 projection = glm::mat4(1.0f);

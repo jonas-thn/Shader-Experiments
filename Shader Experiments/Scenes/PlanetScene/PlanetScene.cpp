@@ -10,6 +10,7 @@ void PlanetScene::Init()
 
 void PlanetScene::Update(float dt)
 {
+	//...
 }
 
 void PlanetScene::Draw(glm::mat4& view, glm::mat4& projection, glm::vec3& camPos, float time)
