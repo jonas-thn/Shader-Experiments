@@ -78,7 +78,7 @@ MaterialData map(vec3 pos)
 	result.color = mix(vec3(0.0, 0.8, 1.0), result.color, blend);
 
 	dist = sdfTorus(rotateX(time + 1.6) * (pos - vec3(0.2, 2.5, 8.0)), vec2(1.0, 0.2));
-	result.dist = sminWithBlend(result.dist, dist, 0.8 * sin(time) + 0.8, blend);
+	result.dist = sminWithBlend(result.dist, dist, 0.8 * sin(time + 2.4) + 0.8, blend);
 	result.color = mix(vec3(1.0, 1.0, 0.0), result.color, blend);
 
 	return result;
@@ -117,7 +117,7 @@ float CalculateShadow(vec3 pos, vec3 lightDir)
 			return 0.0;
 		}
 
-		res = min(res, 7.0 * distToScene / d);
+		res = min(res, 10.0 * distToScene / d);
 
 		d += distToScene;
 	}
@@ -149,6 +149,7 @@ vec3 Raymarch(vec3 cameraOrigin, vec3 cameraDir)
 	MaterialData material = MaterialData(vec3(0.0), 0.0);
 
 	vec3 skyColor = vec3(0.5, 0.55, 1.0);
+	skyColor = mix(skyColor, skyColor * 0.25, smoothstep(0.5, 1.0, TexCoords.y));
 
 	for(int i = 0; i < NUM_STEPS; i++)
 	{

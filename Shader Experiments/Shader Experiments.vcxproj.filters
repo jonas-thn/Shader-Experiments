@@ -69,6 +69,9 @@
     <ClCompile Include="Scenes\RaymarchingScene\RaymarchingScene.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes\TerrainScene\TerrainScene.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -134,6 +137,9 @@
     <ClInclude Include="Scenes\RaymarchingScene\RaymarchingScene.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Scenes\TerrainScene\TerrainScene.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Standard\standardShader.vert" />
@@ -146,6 +152,8 @@
     <None Include="Shader\Planet\planetShader.frag" />
     <None Include="Shader\Raymarching\raymarchShader.vert" />
     <None Include="Shader\Raymarching\raymarchShader.frag" />
+    <None Include="Shader\Terrain\terrainShader.vert" />
+    <None Include="Shader\Terrain\terrainShader.frag" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ImGui\LICENSE.txt" />

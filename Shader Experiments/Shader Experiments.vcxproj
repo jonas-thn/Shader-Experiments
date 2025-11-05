@@ -153,6 +153,7 @@
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="Scenes\TerrainScene\TerrainScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Scenes\Scene.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="Scenes\TerrainScene\TerrainScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Lighting\lightingShader.frag" />
@@ -188,6 +190,8 @@
     <None Include="Shader\Raymarching\raymarchShader.vert" />
     <None Include="Shader\Standard\standardShader.frag" />
     <None Include="Shader\Standard\standardShader.vert" />
+    <None Include="Shader\Terrain\terrainShader.frag" />
+    <None Include="Shader\Terrain\terrainShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ImGui\LICENSE.txt" />

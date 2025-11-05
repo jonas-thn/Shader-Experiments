@@ -176,7 +176,7 @@ void Application::DrawGUI()
 	ImGui::SetNextWindowPos(ImVec2(width - uiWidth, 0));
 	ImGui::SetNextWindowSize(ImVec2(uiWidth, height));
 
-	ImGui::Begin("Shader Scenes", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollWithMouse);
+	ImGui::Begin("Shader Scenes", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
 
 	const int buttonHeight = 20;
 
@@ -227,8 +227,22 @@ void Application::DrawGUI()
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
-	ImGui::SeparatorText("Other");
+	ImGui::SeparatorText("Terrain");
 	if (ImGui::Button("Load Scene##4", ImVec2(-1, buttonHeight)))
+	{
+		activeScene = ActiveScene::Terrain;
+		ResetScenes();
+		terrainScene->active = true;
+	}
+	ImGui::Text("Terrain Shader:");
+	ImGui::BulletText("Raymarching");
+	ImGui::BulletText("Procedual Generation");
+	ImGui::BulletText("Atmosphere");
+
+	ImGui::Dummy(ImVec2(0.0, 10.0));
+
+	ImGui::SeparatorText("Other");
+	if (ImGui::Button("Load Scene##9", ImVec2(-1, buttonHeight)))
 	{
 		activeScene = ActiveScene::Other;
 		ResetScenes();
@@ -267,6 +281,10 @@ void Application::DrawScene()
 	else if (activeScene == ActiveScene::Raymarching)
 	{
 		raymrchingScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
+	}
+	else if (activeScene == ActiveScene::Terrain)
+	{
+		terrainScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}
 	else if (activeScene == ActiveScene::Other)
 	{
