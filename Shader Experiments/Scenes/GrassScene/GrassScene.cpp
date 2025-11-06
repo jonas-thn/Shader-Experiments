@@ -10,17 +10,15 @@ void GrassScene::Init()
 	plane.Rotate(90.0f, glm::vec3(1.0, 0.0, 0.0));
 	plane.SetScale(glm::vec3(4.0));
 
-	grass.Init();
-	for (int i = 0; i < count; i++)
-	{
-		offsets.push_back(glm::vec3(0.0f + i, 0.0f, 0.0f));
-	}
+	grass1.Init();
+	grass2.Init();
 }
 
 void GrassScene::Draw(glm::mat4& view, glm::mat4& projection, glm::vec3& camPos, float time)
 {
-	plane.Draw(standardShader, view, projection, camPos, time, 0);
+	plane.Draw(standardShader, view, projection, camPos, time, 0, 0);
 
-	grass.Draw(grassShader, view, projection, camPos, time, offsets, count);
+	grass1.Draw(grassShader, view, projection, camPos, time, 0, count);
+	grass2.Draw(grassShader, view, projection, camPos, time, 1, count);
 }
 

@@ -75,9 +75,6 @@
     <ClCompile Include="Scenes\GrassScene\GrassScene.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="MeshInstances.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -147,9 +144,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\GrassScene\GrassScene.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshInstances.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

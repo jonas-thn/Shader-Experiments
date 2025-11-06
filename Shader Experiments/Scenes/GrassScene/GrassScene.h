@@ -4,7 +4,6 @@
 #include <vector>
 #include "../../Shader.h"
 #include "../../Mesh.h"
-#include "../../MeshInstances.h"
 
 class GrassScene
 {
@@ -19,9 +18,9 @@ private:
 	Shader grassShader = Shader("./Shader/Grass/grassShader.vert", "./Shader/Grass/grassShader.frag");
 
 	Mesh plane = Mesh("./Models/quad.obj");
-	MeshInstances grass = MeshInstances("./Models/grass.obj");
 
-	std::vector<glm::vec3> offsets;
-	int count = 5;
+	Mesh grass1 = Mesh("./Models/grass.obj");
+	Mesh grass2 = Mesh("./Models/grass.obj");
+	int count = 900;
 };
 

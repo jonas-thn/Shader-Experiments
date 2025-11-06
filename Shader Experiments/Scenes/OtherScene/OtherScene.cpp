@@ -22,6 +22,6 @@ void OtherScene::Update(float dt)
 
 void OtherScene::Draw(glm::mat4& view, glm::mat4& projection, glm::vec3& camPos, float time)
 {
-	sphereNoise.Draw(noiseShader, view, projection, camPos, time, 0);
-	sphereRipple.Draw(rippleShader, view, projection, camPos, time, 999);
+	sphereNoise.Draw(noiseShader, view, projection, camPos, time, 0, 0);
+	sphereRipple.Draw(rippleShader, view, projection, camPos, time, 999, 0);
 }

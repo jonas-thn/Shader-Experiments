@@ -207,8 +207,7 @@ void Application::DrawGUI()
 		planetScene->active = true;
 	}
 	ImGui::Text("Planet and Stars Shader:");
-	ImGui::BulletText("Signed Distance Functions");
-	ImGui::BulletText("Lighting");
+	ImGui::BulletText("Signed Distance Fields");
 	ImGui::BulletText("Noise");
 	ImGui::BulletText("3D Mapping");
 
@@ -237,7 +236,6 @@ void Application::DrawGUI()
 		terrainScene->active = true;
 	}
 	ImGui::Text("Terrain Shader:");
-	ImGui::BulletText("Raymarching");
 	ImGui::BulletText("Procedual Generation");
 	ImGui::BulletText("Atmosphere");
 
@@ -301,7 +299,7 @@ void Application::DrawScene()
 	else if (activeScene == ActiveScene::Grass)
 	{
 		camRadius = 7.0f;
-		camSpeed = 1.0f;
+		camSpeed = 0.3f;
 		cameraHeight = 1.75;
 		grassScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}

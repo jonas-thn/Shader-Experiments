@@ -110,7 +110,7 @@ void Mesh::SetScale(glm::vec3 scale)
 	model[3] = glm::vec4(translation, 1.0f);
 }
 
-void Mesh::Draw(Shader& shader, glm::mat4& view, glm::mat4& projection, glm::vec3& camPos, float time, int index) const
+void Mesh::Draw(Shader& shader, glm::mat4& view, glm::mat4& projection, glm::vec3& camPos, float time, int index, int count) const
 {
 	if (vertices.empty()) return;
 
@@ -123,14 +123,30 @@ void Mesh::Draw(Shader& shader, glm::mat4& view, glm::mat4& projection, glm::vec
 	shader.SetInt("index", index);
 
 	glBindVertexArray(VAO);
-	if (indices.empty())
+
+	if (count <= 0)
 	{
-		glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 8);
+		if (indices.empty())
+		{
+			glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 8);
+		}
+		else
+		{
+			glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+		}
 	}
 	else
 	{
-		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+		if (indices.empty())
+		{
+			glDrawArraysInstanced(GL_TRIANGLES, 0, vertices.size() / 8, count);
+		}
+		else
+		{
+			glDrawElementsInstanced(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0, count);
+		}
 	}
+	
 	glBindVertexArray(0);
 }
 

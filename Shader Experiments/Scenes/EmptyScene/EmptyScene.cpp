@@ -18,6 +18,6 @@ void EmptyScene::Draw(glm::mat4& view, glm::mat4& projection, glm::vec3& camPos,
 {
 	for (int i = 0; i < meshList.size(); i++)
 	{
-		meshList[i]->Draw(standardShader, view, projection, camPos, time, i);
+		meshList[i]->Draw(standardShader, view, projection, camPos, time, i, 0);
 	}
 }

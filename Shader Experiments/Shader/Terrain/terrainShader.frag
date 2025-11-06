@@ -203,7 +203,7 @@ void main()
 	vec2 sceneUvs = (TexCoords - 0.5) * 2.0;
 	vec2 correctedUvs = vec2(sceneUvs.r , sceneUvs.g * (9.0 / 16.0));
 
-	float t = time * 0.5;
+	float t = time * -0.5;
 	vec3 rayDir = normalize(vec3(correctedUvs, 1.0));
 	vec3 rayOrigin = vec3(3.0, 0.7, -3.0) * vec3(cos(t), 1.0, sin(t));
 	vec3 rayLookAt = vec3(0.0);
