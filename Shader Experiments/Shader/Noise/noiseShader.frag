@@ -42,10 +42,12 @@ float noise(vec3 p)
 
 void main()
 {
+	vec3 viewDir = normalize(cameraPos - FragPos);
+
     vec3 lightDir = normalize(vec3(-1.0, 1.0, -1.0));
 	float diffuse = max(0.0, dot(lightDir, normalize(Normals)));
 	vec3 baseColor = vec3(0.2) + diffuse;
-    vec3 edgeColor = vec3(1.0, 0.6, 0.0);
+    vec3 edgeColor = vec3(1.0, 0.8, 0.0);
 
     float speed = 0.5;
     float sinTime = sin(time * 0.5f) * 0.5 + 0.5;
@@ -58,10 +60,17 @@ void main()
 
     vec3 colorMix = mix(baseColor, edgeColor, cutoffEdge);
 
+    vec3 fresnelColor = vec3(0.5, 0.3, 0.0);
+	float fresnelValue = 1 - dot(viewDir, normalize(Normals));
+	fresnelValue = clamp(pow(fresnelValue, 5.0), 0.0, 1.0);
+	vec3 fresnel = fresnelValue * fresnelColor;
+
     FragColor = vec4(mix(colorMix, vec3(0.0, 0.0, 0.0), cutoff), 1.0);
 
     if(distance(FragColor.rgb, vec3(0.0)) < 0.01)
     {
         discard;
     }
+
+    FragColor += vec4(fresnel, 0.0);
 }

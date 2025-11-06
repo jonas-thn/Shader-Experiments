@@ -21,4 +21,6 @@ private:
 
 	Mesh sphereNoise = Mesh("./Models/sphere_high.obj");
 	Mesh sphereRipple = Mesh("./Models/sphere_high.obj");
+	Mesh monkeyExplode = Mesh("./Models/monkey_high.obj");
+	Mesh monkeySphere = Mesh("./Models/monkey_high.obj");
 };

@@ -12,12 +12,9 @@ out vec4 FragColor;
 
 void main()
 {
-	vec3 color = vec3(0.3, 0.8, 0.3);
-//	vec3 ambient = vec3(0.3, 0.8, 0.3);
-//
-//	vec3 lightDir = normalize(vec3(-1.0, 1.0, -1.0));
-//	float diffuse = max(0.0, dot(lightDir, normalize(Normals)));
-//	vec3 finalColor = baseColor * diffuse + ambient * 0.5;
+	vec3 lightDir = normalize(vec3(-1.0, 1.0, 2.0));
+	float diffuse = max(0.0, dot(lightDir, normalize(Normals)));
+	vec3 finalColor = mix(vColor * diffuse, vColor, 0.7);
 
-	FragColor = vec4(vColor, 1.0);
+	FragColor = vec4(finalColor, 0.0);
 }

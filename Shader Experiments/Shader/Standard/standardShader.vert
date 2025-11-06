@@ -21,6 +21,4 @@ void main()
     TexCoords = aTexCoords;
     Normals = normalize(transpose(inverse(mat3(model))) * aNormals);
     gl_Position = projection * view * model * vec4(aPos, 1.0);
-
-
 }

@@ -18,6 +18,7 @@ private:
 	Shader grassShader = Shader("./Shader/Grass/grassShader.vert", "./Shader/Grass/grassShader.frag");
 
 	Mesh plane = Mesh("./Models/quad.obj");
+	Mesh sphere = Mesh("./Models/sphere.obj");
 
 	Mesh grass1 = Mesh("./Models/grass.obj");
 	Mesh grass2 = Mesh("./Models/grass.obj");

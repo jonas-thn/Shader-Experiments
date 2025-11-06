@@ -14,6 +14,10 @@ out vec2 TexCoords;
 out vec3 Normals;
 out vec3 FragPos;
 
+float hash(float n) {
+    return fract(sin(n) * 43758.5453);
+}
+
 void main()
 {
     vec3 locPos = aPos;
@@ -25,9 +29,31 @@ void main()
         locPos += aNormals * t * 0.05;
     }
 
+    if(index == 997)
+    {
+        vec3 pos = normalize(locPos) * length(locPos); 
+        float spherify = sin(time) * 0.5 + 0.5; 
+        locPos = mix(locPos, normalize(pos), spherify);
+    }
+
 	vec4 worldPos = model * vec4(locPos, 1.0);
+
+    if(index == 998)
+    {
+        float triID = floor(float(gl_VertexID) / 3.0);
+
+        vec3 offset = vec3(
+            hash(triID * 12.9),
+            hash(triID * 78.2),
+            hash(triID * 45.1)
+        ) * 2.0 - 1.0;
+    
+        worldPos.xyz += offset * max(0.0, 0.1 * sin(time) + 0.07);
+    }
+
     FragPos = worldPos.xyz;
     TexCoords = aTexCoords;
     Normals = normalize(transpose(inverse(mat3(model))) * aNormals);
+
     gl_Position = projection * view * worldPos;
 }

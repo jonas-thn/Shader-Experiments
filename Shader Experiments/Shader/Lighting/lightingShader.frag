@@ -68,5 +68,33 @@ void main()
 	vec3 finalColor = (baseColor * ambient) + (hemi * 0.5) + (diffuse * saturation + diffuse * baseColor * saturation) + (specular * 0.5) + (fresnel * 0.2);
 	finalColor = clamp(finalColor, 0.0, 1.0);
 
+	 if(index == 999)
+	 {
+		 fresnelColor = vec3(0.0, 0.3, 0.5);
+		fresnelValue = 1 - dot(viewDir, normal);
+		fresnelValue = clamp(pow(fresnelValue, 5.0), 0.0, 1.0);
+		fresnel = fresnelValue * fresnelColor;
+
+		finalColor += fresnel;
+	 }
+	 else if(index == 998)
+	 {
+		fresnelColor = vec3(0.6, 0.0, 0.0);
+		fresnelValue = 1 - dot(viewDir, normal);
+		fresnelValue = clamp(pow(fresnelValue, 5.0), 0.0, 1.0);
+		fresnel = fresnelValue * fresnelColor;
+
+		finalColor += fresnel;
+	 }
+	 else if(index == 997)
+	 {
+		fresnelColor = vec3(0.0, 0.6, 0.0);
+		fresnelValue = 1 - dot(viewDir, normal);
+		fresnelValue = clamp(pow(fresnelValue, 5.0), 0.0, 1.0);
+		fresnel = fresnelValue * fresnelColor;
+
+		finalColor += fresnel;
+	 }
+
 	FragColor = vec4(finalColor, 1.0);
 }

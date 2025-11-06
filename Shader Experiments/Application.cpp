@@ -248,6 +248,8 @@ void Application::DrawGUI()
 		ResetScenes();
 	}
 	ImGui::Text("Grass Shader:");
+	ImGui::BulletText("Instancing");
+	ImGui::BulletText("Bending");
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
@@ -259,8 +261,10 @@ void Application::DrawGUI()
 		otherScene->active = true;
 	}
 	ImGui::Text("Other Shaders:");
-	ImGui::BulletText("Dissolve Effect");
-	ImGui::BulletText("Ripple Effect");
+	ImGui::BulletText("Dissolve");
+	ImGui::BulletText("Ripple");
+	ImGui::BulletText("Spherify");
+	ImGui::BulletText("Explosion");
 
 	ImGui::End();
 
@@ -300,13 +304,13 @@ void Application::DrawScene()
 	{
 		camRadius = 7.0f;
 		camSpeed = 0.3f;
-		cameraHeight = 1.75;
+		cameraHeight = 2;
 		grassScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}
 	else if (activeScene == ActiveScene::Other)
 	{
 		camRadius = 6.0f;
-		camSpeed = 0.5f;
+		camSpeed = 0.2f;
 		cameraHeight = 0.5f;
 		otherScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}
