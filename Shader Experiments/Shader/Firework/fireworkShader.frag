@@ -27,7 +27,7 @@ vec2 Hash12Polar(float t)
 }
 
 const int NUM_PARTICLES = 50;
-const int NUM_EXPLOSIONS = 5;
+const int NUM_EXPLOSIONS = 7;
 
 float Explosion(vec2 uv, float t)
 {
