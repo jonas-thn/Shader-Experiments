@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Scenes\FireworkScene\FireworkScene.cpp" />
     <ClCompile Include="Scenes\GrassScene\GrassScene.cpp" />
     <ClCompile Include="Scenes\RaymarchingScene\RaymarchingScene.cpp" />
     <ClCompile Include="Scenes\PlanetScene\PlanetScene.cpp" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Scenes\FireworkScene\FireworkScene.h" />
     <ClInclude Include="Scenes\GrassScene\GrassScene.h" />
     <ClInclude Include="Scenes\RaymarchingScene\RaymarchingScene.h" />
     <ClInclude Include="Scenes\PlanetScene\PlanetScene.h" />
@@ -182,6 +184,8 @@
     <ClInclude Include="Scenes\TerrainScene\TerrainScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shader\Firework\fireworkShader.frag" />
+    <None Include="Shader\Firework\fireworkShader.vert" />
     <None Include="Shader\Grass\grassShader.frag" />
     <None Include="Shader\Grass\grassShader.vert" />
     <None Include="Shader\Lighting\lightingShader.frag" />

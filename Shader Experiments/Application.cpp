@@ -253,6 +253,27 @@ void Application::DrawGUI()
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
+	ImGui::SeparatorText("Firework");
+	if (ImGui::Button("Load Scene##6", ImVec2(-1, buttonHeight)))
+	{
+		activeScene = ActiveScene::Firework;
+		ResetScenes();
+		fireworkScene->active = true;
+	}
+	ImGui::Text("Firework Shader:");
+
+	ImGui::Dummy(ImVec2(0.0, 10.0));
+
+	ImGui::SeparatorText("Water");
+	ImGui::Text("WORK IN PROGRESS...");
+
+	ImGui::Dummy(ImVec2(0.0, 10.0));
+
+	ImGui::SeparatorText("Tunnel");
+	ImGui::Text("WORK IN PROGRESS...");
+
+	ImGui::Dummy(ImVec2(0.0, 10.0));
+
 	ImGui::SeparatorText("Other");
 	if (ImGui::Button("Load Scene##9", ImVec2(-1, buttonHeight)))
 	{
@@ -299,6 +320,10 @@ void Application::DrawScene()
 	else if (activeScene == ActiveScene::Terrain)
 	{
 		terrainScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
+	}
+	else if (activeScene == ActiveScene::Firework)
+	{
+		fireworkScene->Draw(view, projection, camPos, (SDL_GetTicks() * 0.001f));
 	}
 	else if (activeScene == ActiveScene::Grass)
 	{

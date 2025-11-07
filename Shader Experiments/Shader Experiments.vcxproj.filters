@@ -75,6 +75,9 @@
     <ClCompile Include="Scenes\GrassScene\GrassScene.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes\FireworkScene\FireworkScene.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -146,6 +149,9 @@
     <ClInclude Include="Scenes\GrassScene\GrassScene.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Scenes\FireworkScene\FireworkScene.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Standard\standardShader.vert" />
@@ -162,6 +168,8 @@
     <None Include="Shader\Terrain\terrainShader.frag" />
     <None Include="Shader\Grass\grassShader.vert" />
     <None Include="Shader\Grass\grassShader.frag" />
+    <None Include="Shader\Firework\fireworkShader.vert" />
+    <None Include="Shader\Firework\fireworkShader.frag" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ImGui\LICENSE.txt" />
