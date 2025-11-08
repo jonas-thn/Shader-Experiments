@@ -199,17 +199,14 @@ void Application::DrawGUI()
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
-	ImGui::SeparatorText("Planet");
-	if (ImGui::Button("Load Scene##2", ImVec2(-1, buttonHeight)))
+	ImGui::SeparatorText("Water");
+	if (ImGui::Button("Load Scene##7", ImVec2(-1, buttonHeight)))
 	{
-		activeScene = ActiveScene::Planet;
+		activeScene = ActiveScene::Water;
 		ResetScenes();
-		planetScene->active = true;
+		waterScene->active = true;
 	}
-	ImGui::Text("Planet and Stars Shader:");
-	ImGui::BulletText("Signed Distance Fields");
-	ImGui::BulletText("Noise");
-	ImGui::BulletText("3D Mapping");
+	ImGui::Text("Water Shader:");
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
@@ -225,19 +222,6 @@ void Application::DrawGUI()
 	ImGui::BulletText("Distance Fog");
 	ImGui::BulletText("Soft Shadows");
 	ImGui::BulletText("Ambient Occlusion");
-
-	ImGui::Dummy(ImVec2(0.0, 10.0));
-
-	ImGui::SeparatorText("Terrain");
-	if (ImGui::Button("Load Scene##4", ImVec2(-1, buttonHeight)))
-	{
-		activeScene = ActiveScene::Terrain;
-		ResetScenes();
-		terrainScene->active = true;
-	}
-	ImGui::Text("Terrain Shader:");
-	ImGui::BulletText("Procedual Generation");
-	ImGui::BulletText("Atmosphere");
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
@@ -266,19 +250,35 @@ void Application::DrawGUI()
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
-	ImGui::SeparatorText("Water");
-	if (ImGui::Button("Load Scene##7", ImVec2(-1, buttonHeight)))
-	{
-		activeScene = ActiveScene::Water;
-		ResetScenes();
-		waterScene->active = true;
-	}
-	ImGui::Text("Water Shader:");
+	ImGui::SeparatorText("Tunnel");
+	ImGui::Text("WORK IN PROGRESS...");
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
-	ImGui::SeparatorText("Tunnel");
-	ImGui::Text("WORK IN PROGRESS...");
+	ImGui::SeparatorText("Planet");
+	if (ImGui::Button("Load Scene##2", ImVec2(-1, buttonHeight)))
+	{
+		activeScene = ActiveScene::Planet;
+		ResetScenes();
+		planetScene->active = true;
+	}
+	ImGui::Text("Planet and Stars Shader:");
+	ImGui::BulletText("Signed Distance Fields");
+	ImGui::BulletText("Noise");
+	ImGui::BulletText("3D Mapping");
+
+	ImGui::Dummy(ImVec2(0.0, 10.0));
+
+	ImGui::SeparatorText("Terrain");
+	if (ImGui::Button("Load Scene##4", ImVec2(-1, buttonHeight)))
+	{
+		activeScene = ActiveScene::Terrain;
+		ResetScenes();
+		terrainScene->active = true;
+	}
+	ImGui::Text("Terrain Shader:");
+	ImGui::BulletText("Procedual Generation");
+	ImGui::BulletText("Atmosphere");
 
 	ImGui::Dummy(ImVec2(0.0, 10.0));
 
