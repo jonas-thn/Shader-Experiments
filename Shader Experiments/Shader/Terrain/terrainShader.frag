@@ -185,6 +185,8 @@ vec3 Raymarch(vec3 cameraOrigin, vec3 cameraDir)
 
 	color = color * extinction  + fogColor * inscatter;
 
+
+
 	return color;
 }
 

@@ -84,11 +84,13 @@ void main()
     vec3 rotatedPos = rotationMatrix * aPos;
 
     //bend
-    float bendAmount = sin(time) * 0.5; 
-    rotatedPos.x += rotatedPos.y * rotatedPos.y * bendAmount;
+    float bendAmountA = sin(5 * rotatedPos.y * time) * 0.01; 
+    float bendAmountB = sin(time) * 0.5; 
+    float bendAmountFinal = -bendAmountA + rotatedPos.y * rotatedPos.y * bendAmountB;
+    rotatedPos.x += bendAmountFinal;
 
     mat3 bendMatrix = mat3(
-        1.0, 2.0 * rotatedPos.y * bendAmount, 0.0,  
+        1.0, 2.0 * rotatedPos.y * bendAmountFinal, 0.0,  
         0.0, 1.0, 0.0,                              
         0.0, 0.0, 1.0                               
     );
