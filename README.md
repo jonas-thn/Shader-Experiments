@@ -16,7 +16,7 @@
   </tr>
   <tr>
     <td><img src="imgs/{A538B882-6DDD-4E21-926F-A3BC33378370}.png" width="300"/></td>
-    <td><img src="imgs/{1D49BD9A-4CCF-43F0-9ED4-31AACB969A0F}.png" width="300"/></td>
+    <td><img src="imgs/{1D49D9A-4CCF-43F0-9ED4-31AACB969A0F}.png" width="300"/></td>
     <td><img src="imgs/{8D9463B4-214B-47DD-97AD-25D7F4CA4F13}.png" width="300"/></td>
   </tr>
 </table>
